@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    .container
+      .jumbotron
+        h2 Consent Form
+        p.lead
+          small In consideration of the disclosure of Proprietary Information by the Disclosing Party, the Receiving Party hereby agrees: (i) to hold the Proprietary Information in strict confidence and to take all reasonable precautions to protect such Proprietary Information (including, without limitation, all precautions the Receiving Party employs with respect to its own confidential materials), (ii) not to disclose any such Proprietary Information or any information derived therefrom to any third person, (iii) not to make any use whatsoever at any time of such Proprietary Information except to evaluate internally its relationship with the Disclosing Party, and (iv) not to copy or reverse engineer any such Proprietary Information. The Receiving Party shall procure that its employees, agents and sub-contractors to whom Proprietary Information is disclosed or who have access to Proprietary Information sign a nondisclosure or similar agreement in content substantially similar to this Agreement
+        
+        form(method='post')
+          .form-group
+            label Full Name
+            input.form-control(type='text', name='username', placeholder='First Name, Last Name')
+          .form-group
+            label Unique ID
+            input.form-control(type='text', name='uniqueID', placeholder='6 digit ID')
+          .form-group
+            .checkbox
+              label
+                input(type='checkbox', name='agreeForm')
+                strong Agree with the above form
+          .form-group
+              button.btn.btn-lg.btn-success.btn-block(type='submit') Continue
+              
+
+      .footer
+        p &copy; Carnegie Mellon University #{+new Date().getFullYear()} 
+
+    // /container
+    
+    // Bootstrap core JavaScript
+    // ==================================================
+    // Placed at the end of the document so the pages load faster
