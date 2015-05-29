@@ -22,8 +22,8 @@ exports.home_post_handler = function(req, res) {
 exports.page = function(req, res) {
     var name = req.query.name;
     var contents = {
-        about: 'Ninja Store sells the coolest ninja stuff in the world. Anyone shopping here is cool.',
-        contact: 'You can contact us at <address><strong>Ninja Store</strong>,<br>1, World Ninja Headquarters,<br>Ninja Avenue,<br>NIN80B7-JP,<br>Nihongo.</address>'
+        about: "This is a study to analyze the corrlation between Duolingo Test and students' academic performance. All students finish the Duolingo test will be rewarded. One will only be rewareded once regardless the number of tests he/she may take. <br><br>For further questions, please contact with Tiancheng via the contact page.",
+        contact: 'You may contact us at<br><address><strong>Tiancheng (Tony) Zhao</strong><br><a href="mailto:#">tzdialrc@yahoo.com</a><br>Carnegie Mellon University, USA</address>'
     };
-    res.render('page', { title: 'Ninja Store - ' + name, username: req.session.username, content:contents[name] });
+    res.render('page', { title: 'Duolingo Consent Form', content:contents[name] });
 };

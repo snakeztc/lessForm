@@ -15,16 +15,9 @@ block content
             label Unique ID
             input.form-control(type='text', name='uniqueID', placeholder='6 digit ID')
           .form-group
-            .checkbox
-              label
-                input(type='checkbox', name='agreeForm')
-                strong Agree with the above form
-          .form-group
-              button.btn.btn-lg.btn-success.btn-block(type='submit') Continue
+              button.btn.btn-lg.btn-success.btn-block(type='submit') I Hereby Give My Consent, as Described in the Document Above
               
-
-      .footer
-        p &copy; Carnegie Mellon University #{+new Date().getFullYear()} 
+      include footer
 
     // /container
     
