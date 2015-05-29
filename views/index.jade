@@ -6,16 +6,19 @@ block content
         h2 Consent Form
         p.lead
           small In consideration of the disclosure of Proprietary Information by the Disclosing Party, the Receiving Party hereby agrees: (i) to hold the Proprietary Information in strict confidence and to take all reasonable precautions to protect such Proprietary Information (including, without limitation, all precautions the Receiving Party employs with respect to its own confidential materials), (ii) not to disclose any such Proprietary Information or any information derived therefrom to any third person, (iii) not to make any use whatsoever at any time of such Proprietary Information except to evaluate internally its relationship with the Disclosing Party, and (iv) not to copy or reverse engineer any such Proprietary Information. The Receiving Party shall procure that its employees, agents and sub-contractors to whom Proprietary Information is disclosed or who have access to Proprietary Information sign a nondisclosure or similar agreement in content substantially similar to this Agreement
-        
+
         form(method='post')
           .form-group
-            label Full Name
-            input.form-control(type='text', name='username', placeholder='First Name, Last Name')
+            label(id='nameTag') Full Name 
+            input.form-control(type='text', name='username', placeholder='First Name, Last Name', required='true')
           .form-group
             label Unique ID
-            input.form-control(type='text', name='uniqueID', placeholder='6 digit ID')
+            input.form-control(type='text', name='uniqueID', placeholder='6 digit ID', required='true')
           .form-group
               button.btn.btn-lg.btn-success.btn-block(type='submit') I Hereby Give My Consent, as Described in the Document Above
+        if expressFlash.length > 0
+          .p(style='color:red') 
+            small #{ expressFlash }
               
       include footer
 

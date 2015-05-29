@@ -1,22 +1,31 @@
 // handler for homepage
 exports.home = function(req, res) {
-	res.render('index', { title: 'Duolingo Consent Form'});
+	res.render('index', { title: 'Duolingo Consent Form', expressFlash: req.flash('warning')});
 };
 
 // handler for form submitted from homepage
 exports.home_post_handler = function(req, res) {
     // if the username is not submitted, give it a default of "Anonymous"
-    console.log('fuck');
+    var date = new Date()
+    stringData = date.toLocaleString();
+    username = req.body.username;
+    uniqueID = req.body.uniqueID;
 
-    console.log(req.body.username);
-    console.log(req.body.uniqueID);
-
-    username = req.body.username || 'Anonymous';
-    // store the username as a session variable
-    req.session.username = username;
-    // redirect the user to homepage
-    res.redirect('http://testcenter.duolingo.com');
+    console.log(stringData);
+    console.log(username);
+    console.log(uniqueID); 
+    if (uniqueID == '' || username == '') {
+        req.flash('warning', 'Please fill all the fields');
+        res.redirect('/');
+    } else {
+        // store the username as a session variable
+        req.session.username = username;
+        // redirect the user to homepage
+        res.redirect('http://testcenter.duolingo.com');
+    }
 };
+
+
 
 // handler for showing simple pages
 exports.page = function(req, res) {
