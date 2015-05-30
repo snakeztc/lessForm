@@ -8,6 +8,10 @@ var http = require('http');
 var session = require('express-session');
 var index = require('./routes/index');
 var flash = require('express-flash');
+var useragent = require('express-useragent');
+// mongoDB related
+var monk = require('monk');
+var db = monk('localhost:27017/duolingo');
 var app = express();
 
 // Begin Server
@@ -36,7 +40,13 @@ app.use(session({
   secret: 'secret' 
 }));
 app.use(flash());
+app.use(useragent.express());
 
+// Make our db accessible to our router
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
 
 // default page
 app.get('/', index.home);
