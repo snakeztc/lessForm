@@ -1,31 +1,38 @@
 // handler for homepage
 exports.home = function(req, res) {
-	res.render('index', { title: 'Duolingo Consent Form', expressFlash: req.flash('warning')});
+    var uid = req.params.uid;
+    var givenUID = ''
+    // check if the path id is in valid format
+    if (uid && uid.length == 6) {
+        givenUID = uid
+    }
+	res.render('index', { title: 'Duolingo Consent Form', expressFlash: req.flash('warning'), initUID: givenUID});
 };
 
 // handler for form submitted from homepage
 exports.home_post_handler = function(req, res) {
-    // if the username is not submitted, give it a default of "Anonymous"
     var date = new Date()
     var ua = req.useragent;
     var OS = 'desktop';
-    stringDate = date.toLocaleString();
-    username = req.body.username;
-    uniqueID = req.body.uniqueID;
+    var stringDate = date.toLocaleString();
+    //username = req.body.username;
+    var uniqueID = req.body.uniqueID;
     // check the OS type
     if (ua.isAndroid == 'true') {
         OS = 'android';
     } else if (ua.isiPhone == 'true' || ua.isiPad == 'true') {
         OS = 'iOS';
     }
+
     // print out variables
     console.log(stringDate);
-    console.log(username);
+    //console.log(username);
     console.log(uniqueID); 
     console.log("User submitted from: " + OS);
     //console.log(ua);
 
-    if (uniqueID == '' || username == '') {
+    if (uniqueID == '') {
+        //if (uniqueID == '' || username == '') {
         req.flash('warning', 'Please fill all the fields');
         res.redirect('/');
     } else {
@@ -34,7 +41,7 @@ exports.home_post_handler = function(req, res) {
         var collection = db.get('subjects');
         collection.insert( {
             "date" : stringDate,
-            "name" : username,
+            //"name" : username,
             "uid" : uniqueID,
         }, function(err, result) {
             if (err) {

@@ -48,12 +48,12 @@ app.use(function(req,res,next){
     next();
 });
 
-// default page
-app.get('/', index.home);
-// handle submit buttons
-app.post('/', index.home_post_handler);
 // show general pages
 app.get('/page', index.page);
+// default page
+app.get('/:uid?', index.home);
+// handle submit buttons
+app.post('/:uid?', index.home_post_handler);
 
 
 // catch 404 and forward to error handler

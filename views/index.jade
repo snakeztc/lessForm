@@ -9,11 +9,8 @@ block content
 
         form(method='post')
           .form-group
-            label(id='nameTag') Full Name 
-            input.form-control(type='text', name='username', placeholder='First Name, Last Name', required='true')
-          .form-group
             label Unique ID
-            input.form-control(type='text', name='uniqueID', placeholder='6 digit ID', required='true')
+            input.form-control(type='text', name='uniqueID', value=initUID, placeholder='6 digit ID', required='true')
           .form-group
               button.btn.btn-lg.btn-success.btn-block(type='submit') I Hereby Give My Consent, as Described in the Document Above
         if expressFlash.length > 0
