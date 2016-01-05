@@ -17,6 +17,7 @@ exports.home_post_handler = function(req, res) {
     var stringDate = date.toLocaleString();
     //username = req.body.username;
     var uniqueID = req.body.uniqueID;
+
     // check the OS type
     if (ua.isAndroid == 'true') {
         OS = 'android';
@@ -52,6 +53,7 @@ exports.home_post_handler = function(req, res) {
             }
         });
         // redirect the user to homepage
+        /*
         if (OS == 'desktop') {
             res.redirect('http://testcenter.duolingo.com');
         } else if (OS == 'android') {
@@ -59,6 +61,8 @@ exports.home_post_handler = function(req, res) {
         } else {
             res.redirect('https://itunes.apple.com/us/app/duolingo-learn-languages-for/id570060128?mt=8');
         }
+        */
+        res.redirect('https://testcenter.duolingo.com/study/'+uniqueID)
     }
 };
 // handler for showing simple pages
