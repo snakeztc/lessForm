@@ -15,6 +15,18 @@ var db = monk('localhost:27017/duolingo');
 var app = express();
 
 // Begin Server
+/* Kermit HTTPS setup
+app.set('port', process.env.PORT || 5000);
+var fs = require('fs');
+var options = {
+        key: fs.readFileSync('/etc/ssl/localcerts/dialrc.org.key'),
+        cert: fs.readFileSync('/etc/ssl/localcerts/dialrc_org_cert.cer')
+};
+server = require('https').createServer(options, app);
+server.listen(app.get('port'), function() {
+        console.log('Server listening on port ' + app.get('port'));
+});
+*/
 var server = http.createServer(app);
 app.set('port',5000);
 server.listen(app.get('port'), function(){
